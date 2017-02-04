@@ -1,0 +1,57 @@
+public void compress(String word){
+        int size=word.length();
+        int counter=0;
+        while(counter<size-1){
+              if(counter==0){
+                 String y="";
+                 y+=word.charAt(counter);
+                  search=search.concat(y);
+                  System.out.println("<0,0,"+y+">");
+                  counter++;
+                  
+              }
+              else{
+                  String x="";
+                  x+=word.charAt(counter)+"";
+                  
+                  
+                  if(!(search.contains(x))){
+                    
+                      System.out.println("<0,0,"+x+">");
+                      search=search.concat(x);
+                      
+                      counter++;
+                      
+                  }
+                  else{
+                      int h=0;
+                  while(search.contains(x)){
+                      counter++;
+                      x+=word.charAt(counter);  //x=aa;
+                      if(counter==size-1){
+                          h++;
+                          break;
+                      }
+                      h++;
+                  }
+                  String taken="";
+                  for(int i=0;i<h;i++){
+                      taken+=x.charAt(i); //taken=a;
+                  }
+                  int length2=search.length();  //before adding x
+                  int lindex=search.lastIndexOf(taken);  //offset of last occurence in search 
+                  int offset=length2-lindex; //offset to get back
+                  search=search.concat(x); // to add that word in search
+                  int length1=taken.length(); // length of taken
+                  int lenthx=x.length();  //length of x
+                  String nextchar="";
+                  nextchar+=x.charAt(lenthx-1);
+                  counter++;
+                  System.out.println("counter"+counter);
+                  System.out.printf("<%d,%d,%s>\n",offset,length1,nextchar);
+              }
+        
+              }
+              
+        }
+    }
